@@ -1,0 +1,87 @@
+:root{
+}
+
+
+.pane{height:100%; overflow:auto;}
+.pane.left{padding:16px; border-right:1px solid var(--border); background:var(--panel)}
+.pane.right{padding:16px}
+
+
+.label{display:block; margin-bottom:8px; color:var(--muted); font-size:13px}
+textarea{
+width:100%; min-height:260px; resize:vertical; padding:12px; border-radius:12px;
+border:1px solid var(--border); background:transparent; color:var(--ink);
+}
+.controls{display:flex; align-items:center; gap:10px; margin:10px 0 6px}
+.small.note{color:var(--muted); margin:0}
+
+
+button{
+padding:8px 12px; border-radius:10px; border:1px solid var(--border);
+background:transparent; color:var(--ink); cursor:pointer; transition:.15s transform, .15s opacity, .15s border;
+}
+button:hover{border-color:#3b445a55}
+button:active{transform:translateY(1px)}
+button.primary{background:linear-gradient(180deg, #22314f, #1b2741); color:#cfe7ff; border-color:#2b3a5a}
+button.ghost{background:transparent}
+button.danger{border-color:#7f1d1d}
+
+
+.results{display:grid; gap:12px}
+.placeholder{opacity:.8; border:1px dashed var(--border); padding:24px; border-radius:12px; text-align:center}
+.placeholder-title{font-weight:700; margin-bottom:6px}
+.placeholder-sub{color:var(--muted)}
+
+
+.card{border:1px solid var(--border); background:var(--panel); border-radius:14px; overflow:hidden}
+.card-head{display:flex; align-items:center; gap:8px; padding:10px 12px; border-bottom:1px solid var(--border)}
+.card-title{font-size:14px; margin:0}
+.card-icon{font-size:18px}
+.card-list{list-style:none; padding:10px 14px; margin:0; display:grid; gap:8px}
+.card-list li{padding:10px 12px; border-radius:10px}
+
+
+.card--green .card-head{background:color-mix(in oklab, var(--green) 18%, var(--panel)); color:var(--green-ink)}
+.card--green .card-list li{background:color-mix(in oklab, var(--green) 12%, transparent); border:1px solid color-mix(in oklab, var(--green) 35%, transparent)}
+
+
+.card--red .card-head{background:color-mix(in oklab, var(--red) 18%, var(--panel)); color:var(--red-ink)}
+.card--red .card-list li{background:color-mix(in oklab, var(--red) 10%, transparent); border:1px solid color-mix(in oklab, var(--red) 35%, transparent)}
+
+
+.card--blue .card-head{background:color-mix(in oklab, var(--blue) 18%, var(--panel)); color:var(--blue-ink)}
+.card--blue .card-list li{background:color-mix(in oklab, var(--blue) 10%, transparent); border:1px solid color-mix(in oklab, var(--blue) 35%, transparent)}
+
+
+.fade-in{animation:fade .45s ease both}
+@keyframes fade{from{opacity:0; transform:translateY(6px)} to{opacity:1; transform:none}}
+
+
+/* Toast */
+.toast{position:fixed; right:14px; bottom:14px; background:var(--panel); border:1px solid var(--border);
+padding:10px 12px; border-radius:10px; opacity:0; transform:translateY(6px); pointer-events:none; transition:.18s}
+.toast.show{opacity:1; transform:translateY(0)}
+
+
+/* Loading overlay */
+.loading{position:fixed; inset:0; display:grid; place-items:center; gap:10px; background:color-mix(in oklab, var(--bg) 60%, transparent); backdrop-filter:blur(2px); color:var(--ink)}
+.spinner{width:28px; height:28px; border:3px solid #0000; border-top-color:var(--accent); border-left-color:var(--accent); border-radius:50%; animation:s 1s linear infinite}
+@keyframes s{to{transform:rotate(1turn)}}
+
+
+/* History drawer */
+.history-drawer{position:fixed; top:52px; right:12px; width:360px; max-width:92vw; bottom:52px; background:var(--panel); border:1px solid var(--border); border-radius:12px; display:flex; flex-direction:column; transform:translateY(8px) scale(.98); opacity:0; pointer-events:none; transition:.18s}
+.history-drawer[aria-hidden="false"]{transform:none; opacity:1; pointer-events:auto}
+.history-head{display:flex; align-items:center; gap:10px; padding:10px 12px; border-bottom:1px solid var(--border)}
+.history-list{padding:10px; overflow:auto; display:grid; gap:8px}
+.history-item{border:1px solid var(--border); border-radius:10px; padding:10px; display:grid; gap:6px; background:color-mix(in oklab, var(--bg) 4%, var(--panel))}
+.history-item .snippet{color:var(--muted); font-size:12px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.history-item .row{display:flex; align-items:center; gap:8px}
+.history-item button{font-size:12px; padding:6px 8px}
+
+
+/* Responsive */
+@media (max-width: 920px){
+.layout{grid-template-columns: 1fr}
+.pane.left{border-right:none; border-bottom:1px solid var(--border)}
+}
