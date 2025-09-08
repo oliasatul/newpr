@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+</head>
+<body data-theme="dark">
+<header class="app-header">
+<div class="title">🔎 Red Flag Detector – Interview Helper</div>
+<div class="spacer"></div>
+<button id="themeToggle" class="ghost" title="Toggle light/dark">🌓</button>
+<button id="historyToggle" class="ghost" title="Show history">🗂️ History</button>
+</header>
+
+
+<div class="layout">
+<aside class="pane left">
+<label for="answer" class="label">Paste your interview answer</label>
+<textarea id="answer" placeholder="Paste or type your answer here..." spellcheck="true"></textarea>
+<div class="controls">
+<button id="sampleBtn" class="ghost">Insert sample</button>
+<div class="spacer"></div>
+<button id="analyzeBtn" class="primary">Analyze</button>
+</div>
+<p class="small note">Tip: Keep it concise and use STAR (Situation, Task, Action, Result). The app will help reframe.</p>
+</aside>
+
+
+<main class="pane right">
+<div id="results" class="results">
+<div class="placeholder">
+<div class="placeholder-title">Ready when you are ✍️</div>
+<div class="placeholder-sub">Paste an answer on the left and click <strong>Analyze</strong>.</div>
+</div>
+</div>
+</main>
+</div>
+
+
+<aside id="historyDrawer" class="history-drawer" aria-hidden="true">
+<div class="history-head">
+<strong>History (last 5)</strong>
+<div class="spacer"></div>
+<button id="clearHistory" class="danger ghost" title="Clear history">🗑️</button>
+</div>
+<div id="historyList" class="history-list"></div>
+</aside>
+
+
+<footer class="app-footer">Powered by DeepSeek, runs private. No text stored on server beyond a single API call.</footer>
+
+
+<template id="cardTmpl">
+<section class="card fade-in">
+<header class="card-head">
+<span class="card-icon"></span>
+<h3 class="card-title"></h3>
+</header>
+<ul class="card-list"></ul>
+</section>
+</template>
+
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<div id="loading" class="loading" hidden>
+<div class="spinner"></div>
+<div>Analyzing…</div>
+</div>
+
+
+<script src="app.js"></script>
+</body>
+</html>
